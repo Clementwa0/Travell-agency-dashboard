@@ -1,8 +1,4 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
+import { isRouteErrorResponse,Links,Meta,Outlet,
   Scripts,
   ScrollRestoration,
 } from "react-router";
@@ -22,6 +18,11 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
 ];
+
+import ej2Base from "@syncfusion/ej2-base"; // ✅ Import the CommonJS module as default
+const { registerLicense } = ej2Base;
+
+registerLicense(import.meta.env.VITE_EJ2_LICENSE_KEY);
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
