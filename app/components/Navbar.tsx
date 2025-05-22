@@ -3,7 +3,7 @@ import { sidebarItems } from '~/constants'
 import { Link, NavLink } from 'react-router'
 import { cn } from '~/lib/utils'
 
-const Navbar = () => {
+const Navbar = ({handleClick }:{handleClick?:() => void}) => {
     const user = {
         name: 'John Doe',
         email: 'john@gmail.com',
@@ -25,7 +25,7 @@ const Navbar = () => {
                             
                             {({ isActive }: { isActive: boolean }) => (
                            <div className={cn("group nav-item", { 'bg-primary !text-white': isActive 
-})}>
+})} onClick={handleClick}>
                         <img 
                         src={icon}
                         alt={label}
