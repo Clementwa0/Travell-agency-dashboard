@@ -1,5 +1,4 @@
-import React from 'react'
-import { Header } from '~/components'
+import { Header, StatsCard, Tripcard } from '~/components'
 
 const Dashboard = () => {
   const user = {name:'Clement'}
@@ -10,7 +9,9 @@ const Dashboard = () => {
       title= {`Welcome ${user?.name ?? 'Guest'}`}
       description="Track Acivity"
        />
-       Dashboard page
+
+       <StatsCard/>
+       <Tripcard />
     </main>
   )
 }
