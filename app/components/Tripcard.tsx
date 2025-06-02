@@ -1,8 +1,12 @@
-import React from 'react'
+import { Link } from "react-router"
 
-const Tripcard = () => {
+const Tripcard = ({id,name,location,imageUrl,tags,price}:
+  TripCardProps ) => {
   return (
-    <div>Tripcard</div>
+    <Link to={`/trips/${id}`} className="trip-card bg-white shadow-md hover:shadow-lg transition-shadow duration-300 rounded-lg p-4">
+      <h2 className="text-lg font-semibold mb-2">{name}</h2> 
+    <img src={imageUrl} alt={name}  />
+    </Link>
   )
 }
 

@@ -49,7 +49,7 @@ const Navbar = ({handleClick }:{handleClick?:() => void}) => {
             <footer className='px-4 py-5 border-t border-gray-200'>
                 <div className='flex items-center gap-3'>
                     <img 
-                        src={user?.imageurl || '/public/assets/images/david.webp'} 
+                        src={user?.imageurl || '/assets/images/david.webp'} 
                         alt={user?.name}
                         className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100"
                     />
@@ -64,7 +64,7 @@ const Navbar = ({handleClick }:{handleClick?:() => void}) => {
                         className='p-2 rounded-lg hover:bg-gray-100 transition-colors'
                     >
                         <img 
-                            src='/public/assets/icons/logout.svg'
+                            src='/assets/icons/logout.svg'
                             alt='logout'
                             className='w-5 h-5'
                         />
