@@ -1,8 +1,14 @@
 import React from 'react'
+import { Header } from '~/components'
 
 const users = () => {
   return (
-    <div>users</div>
+    <main className='dashboard wrapper'>
+      <Header
+            title= "Tourvisto Users"
+            description="Track Acivity"
+             />
+    </main>
   )
 }
 
