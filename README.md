@@ -1,5 +1,5 @@
 
-# 🌍 Dashboard App
+# 🌍 Travel APP
 
 A responsive and dynamic dashboard interface for tracking users, trips, and activity trends. Built with modern React components and clean UI practices.
 
