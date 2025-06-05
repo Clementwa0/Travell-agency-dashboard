@@ -2,7 +2,7 @@ import { isRouteErrorResponse,Links,Meta,Outlet,
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import * as Sentry from "@sentry/react-router";
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -19,10 +19,11 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-import ej2Base from "@syncfusion/ej2-base"; // ✅ Import the CommonJS module as default
-const { registerLicense } = ej2Base;
+import pkg from '@syncfusion/ej2-base';
+const {registerLicense} = pkg;
 
 registerLicense(import.meta.env.VITE_EJ2_LICENSE_KEY);
+
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -47,20 +48,36 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  // Ignore Chrome DevTools specific routes
+  if (
+    typeof window !== 'undefined' && 
+    window.location.pathname.includes('/.well-known/appspecific/com.chrome.devtools')
+  ) {
+    return null;
+  }
+
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
+    // Ignore 404 errors for Chrome DevTools
+    if (error.status === 404 && error.data?.includes('/.well-known/appspecific/com.chrome.devtools')) {
+      return null;
+    }
+    
     message = error.status === 404 ? "404" : "Error";
     details =
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
+    Sentry.captureException(error);
     details = error.message;
     stack = error.stack;
   }
+
+  
 
   return (
     <main className="pt-16 p-4 container mx-auto">

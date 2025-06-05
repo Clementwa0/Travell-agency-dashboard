@@ -1,13 +1,16 @@
 import React from 'react'
 import { sidebarItems } from '~/constants'
-import { Link, NavLink } from 'react-router'
+import { Link, NavLink, useLoaderData, useNavigate } from 'react-router'
 import { cn } from '~/lib/utils'
+import { logoutUser } from '~/appwrite/auth'
 
 const Navbar = ({handleClick }:{handleClick?:() => void}) => {
-    const user = {
-        name: 'John Doe',
-        email: 'john@gmail.com',
-        imageurl: '/public/assets/images/david.webp'
+    const user = useLoaderData();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        await logoutUser();
+        navigate('/sign-in')
     }
   return (
     <section className="min-h-screen w-72 border-r border-gray-200">
@@ -29,8 +32,7 @@ const Navbar = ({handleClick }:{handleClick?:() => void}) => {
                                     "hover:bg-primary-100/80",
                                     { 'bg-primary text-gray': isActive }
                                 )} 
-                                onClick={handleClick}
-                            >
+                                onClick={handleClick}>
                                 <img 
                                     src={icon}
                                     alt={label}
@@ -46,11 +48,12 @@ const Navbar = ({handleClick }:{handleClick?:() => void}) => {
                 ))}
             </nav>
 
-            <footer className='px-4 py-5 border-t border-gray-200'>
-                <div className='flex items-center gap-3'>
+            <footer className='nav-footer'>
+                
                     <img 
                         src={user?.imageurl || '/assets/images/david.webp'} 
                         alt={user?.name}
+                        referrerPolicy='no-referrer'
                         className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100"
                     />
                     <div className="flex-1">
@@ -58,9 +61,7 @@ const Navbar = ({handleClick }:{handleClick?:() => void}) => {
                         <p className="text-sm text-gray-500 truncate">{user?.email}</p>
                     </div>
                     <button 
-                        onClick={() => {
-                            console.log('Logout')
-                        }}
+                        onClick = {handleLogout}
                         className='p-2 rounded-lg hover:bg-gray-100 transition-colors'
                     >
                         <img 
@@ -69,7 +70,7 @@ const Navbar = ({handleClick }:{handleClick?:() => void}) => {
                             className='w-5 h-5'
                         />
                     </button>
-                </div>
+               
             </footer>
         </div>
     </section>

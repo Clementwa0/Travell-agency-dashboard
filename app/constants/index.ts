@@ -145,9 +145,9 @@ export const RIGHT_CONFETTI = {
 
 export const dashboardStats = {
   totalUsers: 12233,
-  usersJoined: { currentMonth: 218, lastMonth: 200 },
+  usersJoined: { currentMonth: 218, lastMonth: 290 },
   totalTrips: 1234,
-  tripsCreated: { currentMonth: 123, lastMonth: 100 },
+  tripsCreated: { currentMonth: 123, lastMonth: 700 },
   userRole: { total: 62, currentMonth: 5, lastMonth: 3 },
 }
 export const user = { name: 'Clement' }
@@ -155,7 +155,7 @@ export const user = { name: 'Clement' }
 export const allTrips = [{
   id: 1,
   name: "Tropical Rewind",
-  imageUrls: ["/assets/images/sample1.jpg"],
+  imageUrls: ["/public/assets/images/sample.jpeg"],
   itinerary: [{ location: "Thailand" }],
   tags: ["Adventure", "Culture"],
   travelStyle: "Solo",
@@ -164,7 +164,7 @@ export const allTrips = [{
 {
   id: 2,
   name: "French Reverie",
-  imageUrls: ["/assets/images/sample2.jpg"],
+  imageUrls: ["/assets/images/sample.jpeg"],
   itinerary: [{ location: "Paris" }],
   tags: ["Relaxation", "Culinary"],
   travelStyle: "Family",
@@ -173,7 +173,7 @@ export const allTrips = [{
 {
   id: 3,
   name: "Zen Break",
-  imageUrls: ["/assets/images/sample3.jpg"],
+  imageUrls: ["/assets/images/sample.jpeg"],
   itinerary: [{ location: "Japan" }],
   tags: ["Shopping", "Luxury"],
   travelStyle: "Couple",
@@ -182,14 +182,14 @@ export const allTrips = [{
 {
   id: 4,
   name: "Adventure in Westeros",
-  imageUrls: ["/assets/images/sample4.jpg"],
+  imageUrls: ["/assets/images/sample.jpeg"],
   itinerary: [{ location: "Croatia" }],
   tags: ["Historical", "Culture"],
   travelStyle: "Friends",
   estimatedPrice: "$4,000",
 },
 ];
-export const users = [
+export const Users = [
   {
     id: 1,
     name: "John Doe",
